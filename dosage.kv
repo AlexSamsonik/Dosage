@@ -9,7 +9,8 @@
     rows: 3
 
     text_input: text_input
-    paracetamol: paracetamol
+    paracetamol_240: paracetamol_240
+    paracetamol_120: paracetamol_120
     ibuprofen: ibuprofen
 
     AnchorLayout:
@@ -22,13 +23,17 @@
             input_filter: "int"
 
     GridLayout:
-        cols: 2
+        cols: 3
 
         BoxLayout:
             orientation: "vertical"
             padding: [30, 0, 0, 0]
+
             ItemLabel:
                 text: "Paracetamol 240mg/5ml"
+
+            ItemLabel:
+                text: "Paracetamol 120mg/5ml"
 
             ItemLabel:
                 text: "Ipubrofen 100mg/5ml"
@@ -38,7 +43,11 @@
             size_hint: 0.5, 1
 
             ItemLabel:
-                id: paracetamol
+                id: paracetamol_240
+                text: "0"
+
+            ItemLabel:
+                id: paracetamol_120
                 text: "0"
 
             ItemLabel:
