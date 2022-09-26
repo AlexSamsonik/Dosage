@@ -1,9 +1,26 @@
 from kivy.app import App
+from kivy.config import Config
+from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
+
+Config.set("kivy", "keyboard_mode", "systemanddock")
+Window.size = (480, 853)
+
+
+def get_dosages(mass):
+    paracetamol = str(15 * mass / 1000)
+    ibuprofen = str(10 * mass / 1000)
+    return {"paracetamol": paracetamol, "ibuprofen": ibuprofen}
 
 
 class Container(GridLayout):
-    pass
+    def calculate(self):
+        mass = int(self.text_input.text)
+
+        dosages = get_dosages(mass)
+
+        self.paracetamol.text = dosages.get("paracetamol")
+        self.ibuprofen.text = dosages.get("ibuprofen")
 
 
 class DosageApp(App):
