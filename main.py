@@ -1,10 +1,15 @@
 from kivy.app import App
-from kivy.uix.button import Button
+from kivy.uix.gridlayout import GridLayout
 
 
-class MyApp(App):
+class Container(GridLayout):
+    pass
+
+
+class DosageApp(App):
     def build(self):
-        return Button(text="Helo KIVY")
+        return Container()
 
 
-MyApp().run()
+if __name__ == '__main__':
+    DosageApp().run()
