@@ -8,8 +8,8 @@ Window.size = (480, 853)
 
 
 def get_dosages(mass):
-    paracetamol = str(15 * mass / 1000)
-    ibuprofen = str(10 * mass / 1000)
+    paracetamol = str(round(15 * mass / 1000 * 5 / 240, 2))
+    ibuprofen = str(round(10 * mass / 1000 * 5 / 100, 2))
     return {"paracetamol": paracetamol, "ibuprofen": ibuprofen}
 
 
