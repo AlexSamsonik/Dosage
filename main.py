@@ -1,10 +1,8 @@
 from kivy.app import App
 from kivy.config import Config
-from kivy.core.window import Window
 from kivy.uix.gridlayout import GridLayout
 
-Config.set("kivy", "keyboard_mode", "systemanddock")
-Window.size = (480, 853)
+Config.set("kivy", "keyboard_mode", "system")
 
 
 def get_dosages(mass):
@@ -15,7 +13,10 @@ def get_dosages(mass):
 
 class Container(GridLayout):
     def calculate(self):
-        mass = int(self.text_input.text)
+        try:
+            mass = int(self.text_input.text)
+        except:
+            mass = 0
 
         dosages = get_dosages(mass)
 
