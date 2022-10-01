@@ -1,11 +1,22 @@
-from kivy.app import App
+"""Main module to run application."""
+
+from typing import Dict
+
 from kivy.config import Config
 from kivy.uix.gridlayout import GridLayout
+from kivymd.app import MDApp
+from kivymd.theming import ThemeManager
 
 Config.set("kivy", "keyboard_mode", "system")
 
 
-def get_dosages(mass):
+def get_dosages(mass) -> Dict[str, str]:
+    """Function which calculate dosage depending on weight in grams.
+
+    :param mass: mass of children in grams
+    :return: Dictionary
+    """
+
     paracetamol_240 = str(round(15 * mass / 1000 * 5 / 240, 2))
     paracetamol_120 = str(round(15 * mass / 1000 * 5 / 120, 2))
     ibuprofen_200 = str(round(10 * mass / 1000 * 5 / 200, 2))
@@ -17,10 +28,14 @@ def get_dosages(mass):
 
 
 class Container(GridLayout):
+    """Class which collect all Layout."""
+
     def calculate(self):
+        """Function which call when end-user click on button 'Calculate'."""
         try:
             mass = int(self.text_input.text)
-        except:
+            print(mass)
+        except ValueError:
             mass = 0
 
         dosages = get_dosages(mass)
@@ -31,8 +46,15 @@ class Container(GridLayout):
         self.ibuprofen_100.text = dosages.get("ibuprofen_100")
 
 
-class DosageApp(App):
+class DosageApp(MDApp):
+    """Application class"""
+
+    theme_cls = ThemeManager()
+    title = "Dosage"
+
     def build(self):
+        """Initializes the application"""
+        self.theme_cls.theme_style = "Light"
         return Container()
 
 

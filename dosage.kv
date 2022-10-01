@@ -1,8 +1,8 @@
-<ItemLabel@Label>:
-    front_size: "45sp"
+<ItemLabel@MDLabel>:
     halign: "left"
     valign: "middle"
     text_size: self.size
+    font_style: "H6"
 
 
 <Container>:
@@ -15,8 +15,11 @@
     ibuprofen_100: ibuprofen_100
 
     AnchorLayout:
-        size_hint: 1, 0.15
-        TextInput:
+        anchor_y: "top"
+        size_hint: 1, 0.2
+        padding: 30
+        MDTextField:
+            hint_text: "Weight of the child in grams"
             id: text_input
             font_size: "45sp"
             multiline: False
@@ -63,9 +66,10 @@
                 text: "0"
 
     BoxLayout:
-        size_hint: 0.9, 0.15
+        size_hint: 1, 0.15
         padding: [30, 0, 30, 20]
-        Button:
+        MDRaisedButton:
+            size_hint: 1, 0.9
             text: "Calculate"
             on_release:
                 root.calculate()
