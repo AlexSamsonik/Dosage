@@ -34,7 +34,6 @@ class Container(GridLayout):
         """Function which call when end-user click on button 'Calculate'."""
         try:
             mass = int(self.text_input.text)
-            print(mass)
         except ValueError:
             mass = 0
 
@@ -54,7 +53,7 @@ class DosageApp(MDApp):
 
     def build(self):
         """Initializes the application"""
-        self.theme_cls.theme_style = "Light"
+        self.theme_cls.theme_style = "Dark"
         return Container()
 
 
